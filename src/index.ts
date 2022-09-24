@@ -4,12 +4,12 @@ import notesRouter from './routers/notes';
 const app = express();
 app.use(express.json());
 
-app.get('/ping', (_req, res) => {
-  console.log('someone pinged here');
-  res.send('pong');
-});
+app.use('/notes', notesRouter);
 
-app.use('/api/notes', notesRouter);
+// const unknownEndpoint = (_req, res) => {
+//   res.status(404).send({ error: 'unknown endpoint' });
+// };
+// app.use(unknownEndpoint);
 
 const PORT = 3000;
 
